@@ -1,8 +1,13 @@
 from pymongo import MongoClient
 import pandas as pd
+from dotenv import load_dotenv
+import os
+
+# Load environment variables
+load_dotenv()
 
 # Koneksi ke MongoDB
-client = MongoClient("mongodb+srv://Ocharu:pablo123@cluster.hg4wl.mongodb.net/") # Untuk lokal, gunakan localhost
+client = MongoClient(os.getenv('MONGODB_URI'))
 db = client["openhearts_data"]  # Nama database
 collection = db["song_comments"]  # Nama collection
 
